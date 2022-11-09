@@ -1,0 +1,47 @@
+var express=require('express');
+var app = express();
+app.use(express.json());
+ students={
+   "user1": {
+    id:1,
+    Name:"vandhana",
+    m1:89,
+    m2:85,
+    },
+    "user2": {
+        id:2,
+        Name:"chelluri",
+        m1:65,
+        m2:38,
+       },
+  "user3":  {
+        id:3,
+        Name:"vandhu",
+        m1:68,
+        m2:45
+        }
+    }
+var bodyParser=require('body-Parser');
+var urlencodedParser=bodyParser.urlencoded(
+{
+    extended:true
+}
+)
+app.put('/:id',(req,res)=>{
+    num=req.params['id'];
+    updt={uid:req.body.id,ename:req.body.Name}
+    //updating the body
+    exp=updt.ename
+    val=updt.uid
+    students[num].id=val;
+    students[num].Name=exp;
+    res.send(students)
+})
+
+
+.listen(9011,()=>{
+   console.log("127.0.0.1:9011");
+   })
+
+
+   //put update
